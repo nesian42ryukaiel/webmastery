@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  background-color: transparent;
+}
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+html {}
+head {}
+body {
+  background: black;
+  background: linear-gradient(to right bottom, black, gray);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+  color: linear-gradient(to right bottom, gray, white);
+  font-family: monospace;
+}
+header {
+  text-align: center;
+}
+main {
+
+}
+footer {
+  text-align: center;
+}
+a {
+  color: yellow;
+}
+em, i {
+  background-color: transparent;
+  color: silver;
+  font-family: cursive;
+}
+h1 {
+  background-color: transparent;
+  color: gold;
+  font-family: fantasy;
+}
+img {
+
+}
+strong, b {
+  background-color: transparent;
+  color: red;
+  font-family: fantasy;
+}
