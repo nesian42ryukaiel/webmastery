@@ -8,6 +8,12 @@
 .left {
   text-align: left;
 }
+.intro, .project-list, .miscellaneous {
+  text-align: center;
+}
+.project-list > ul {
+  display: inline-block;
+}
 .right {
   text-align: right;
 }
