@@ -58,3 +58,9 @@ strong, b {
   color: red;
   font-family: fantasy;
 }
+button {
+  color: white;
+}
+input {
+  color: white;
+}
