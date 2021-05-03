@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/_reset.css">
+    <link rel="stylesheet" href="./css/_manual.css">
+    <script type="text/javascript" src="./js/_manual.js"></script>
+    <title>HTML Manual</title>
+  </head>
+  <body>
+    <header>
+      <h1>HTML Manual</h1>
+    </header>
+    <main>
+      <div class="js-test-button">
+        <!-- onclick tag accepts JavaScript only; -->
+        <button type="button" name="night" onclick="document.querySelector('body').style.backgroundColor='black'; document.querySelector('body').style.color='white';">night</button>
+        <button type="button" name="day" onclick="document.querySelector('body').style.backgroundColor='white'; document.querySelector('body').style.color='black';">day</button>
+      </div>
+      <div class="js-test-script-write">
+        <script type="text/javascript">
+          document.write(1+1 + '<br>');
+          document.write("hello js<br><br>");
+        </script>
+      </div>
+      <div class="js-test-event">
+        <!-- events are what happens dynamically on the browser -->
+        <input type="button" value="hi" onclick="alert('Hi!')">
+        <input type="text" onchange="alert('Changed!')" placeholder="alert when changed">
+        <input type="text" onkeydown="alert('Key down!')" placeholder="alert on any key down">
+      </div>
+      <div class="css-test-font-size">
+        <h1><strong>H</strong>eadline 1</h1>
+        <p>Paragraph one. Foo.</p>
+        <p>Paragraph |<br>two. <em>Bar</em>.</p>
+        <p>Paragraph three.</p>
+      </div>
+      <div class="css-test-em">
+        <h1>Headline 2</h1>
+        <p>Lol.</p>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

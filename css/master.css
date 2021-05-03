@@ -21,7 +21,7 @@ html {}
 head {}
 body {
   background: black;
-  background: linear-gradient(to right bottom, black, gray);
+  background: linear-gradient(to bottom, black, #383838 99%);
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: white;

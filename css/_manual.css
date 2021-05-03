@@ -1,0 +1,40 @@
+* {
+  font-size: 16px;
+  margin: 0;
+}
+.css-test-font-size {
+  font-size: 3em;
+}
+body {
+  background-color: black;
+  color: white;
+  /* font-family: monospace; */
+}
+button {
+  background-image: linear-gradient(to bottom, #e4e4e4, #f7f7f7);
+  border: 1px solid #afafaf;
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.17em;
+}
+h4 {
+  font-size: 1em;
+}
+h5 {
+  font-size: 0.83em;
+}
+h6 {
+  font-size: 0.67em;
+}
+strong, b {
+  color: red;
+}
+em, i {
+  color: cyan;
+}
