@@ -1,40 +1,52 @@
 * {
   font-size: 16px;
   margin: 0;
+  /* padding: 0; */
 }
 .css-test-font-size {
   font-size: 3em;
 }
+.listSquare {
+  list-style-type: square;
+}
 body {
   background-color: black;
   color: white;
+  font-family: "궁서체", "나눔고딕코딩", monospace;
   /* font-family: monospace; */
 }
 button {
   background-image: linear-gradient(to bottom, #e4e4e4, #f7f7f7);
   border: 1px solid #afafaf;
+  font-family: "나눔고딕코딩", monospace;
+}
+input {
+  font-family: "나눔고딕코딩", monospace;
 }
 h1 {
-  font-size: 2em;
+  color: gold;
+  font-size: 2.5em;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 2.25em;
 }
 h3 {
-  font-size: 1.17em;
+  font-size: 2em;
 }
 h4 {
-  font-size: 1em;
+  font-size: 1.75em;
 }
 h5 {
-  font-size: 0.83em;
+  font-size: 1.5em;
 }
 h6 {
-  font-size: 0.67em;
+  font-size: 1.25em;
 }
-strong, b {
-  color: red;
-}
-em, i {
+em, i, em *, i * {
   color: cyan;
+  font-style: italic; /* required to specify after _reset.css */
+}
+strong, b, strong *, b * {
+  color: red;
+  font-weight: bold; /* required to specify after _reset.css */
 }
