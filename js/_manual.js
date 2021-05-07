@@ -20,22 +20,26 @@ var func = function () { // function keyword cannot be used alone!
 
 // objects clean up related variables and functions
 // functions clean up reusable codes
+// using JQuery below, vanilla code staying for reference
 var Body = {
   setBackgroundColor: function(color) {
-    document.querySelector('body').style.backgroundColor = color;
+    // document.querySelector('body').style.backgroundColor = color;
+    $('body').css('backgroundColor', color);
   },
   setColor: function(color) {
-    document.querySelector('body').style.color = color;
+    //document.querySelector('body').style.color = color;
+    $('body').css('color', color);
   }
 };
 var Tags = {
   setColor: function(tag, color) {
-    var alist = document.querySelectorAll(tag);
-    var i = 0;
-    while(i < alist.length){
-      alist[i].style.color = color;
-      i = i + 1;
-    }
+    // var alist = document.querySelectorAll(tag);
+    // var i = 0;
+    // while(i < alist.length){
+    //   alist[i].style.color = color;
+    //   i = i + 1;
+    // }
+    $(tag).css('color', color);
   }
 };
 function nightDayHandler(self){
@@ -45,13 +49,13 @@ function nightDayHandler(self){
     Body.setColor('white');
     self.value = 'day';
     Tags.setColor('h1', 'gold');
-    // setColor('h2', 'gold');
+    Tags.setColor('em', 'cyan');
   } else {
     Body.setBackgroundColor('white');
     Body.setColor('black');
     self.value = 'night';
     Tags.setColor('h1', 'brown');
-    // setColor('h2', 'brown');
+    Tags.setColor('em', 'blue');
   }
 }
 
