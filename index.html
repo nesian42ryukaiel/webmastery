@@ -20,24 +20,16 @@
         <h2><a onclick="
           fetch('toyProjectList').then(function(response){
             response.text().then(function(text){
-              getElementById('toy-project-list').innerHTML = text;
+              document.getElementById('toy-project-list').innerHTML = text;
             })
           })
           ">Project List</a></h2>
-        <div id="toy-project-list">
-
-        </div>
-        <p class="center">The following is a list of skillproof toy projects:</p>
-        <ul>
-          <li class="left" id="weather">2021/04/22 <a href="./weather.html">Weather applet</a> (<a href="https://codepen.io/mattfroese/pen/WaeYQV">actual application</a>)</li>
-          <li class="left" id="virtual-keyboard">2021/04/24 <a href="./keyboard.html">Virtual keyboard</a></li>
-          <li class="left" id="to-do-list">2021/04/29 <a href="./todolist.html">To-do list</a></li>
-        </ul>
+        <div id="toy-project-list">Click "Project List"!</div>
       </div>
       <div class="miscellaneous">
         <h2>Miscellaneous</h2>
         <p class="center">
-        <script type="text/javascript">
+        <script>
           document.write("You rolled a <strong>" + Dice.bell() + "</strong> on your 3d6!");
         </script>
         </p>
@@ -46,7 +38,7 @@
     <footer>
       <em>Webmaster: Lucas Yew</em>
       <p class="center">
-        <script type="text/javascript">
+        <script>
           document.write("This page was first published <strong>" + passedDay +  "</strong> days ago. <br>(published on " + firstDay.toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}) + ")");
         </script>
       </p>
