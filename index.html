@@ -20,7 +20,7 @@
         <h2><a onclick="
           fetch('toyProjectList').then(function(response){
             response.text().then(function(text){
-              document.getElementByID('toy-project-list').innerHTML = text;
+              document.getElementById('toy-project-list').innerHTML = text;
             })
           })
           ">Project List</a></h2>
