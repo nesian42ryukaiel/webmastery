@@ -17,7 +17,16 @@
         <p class="center">This is my public homepage.</p>
       </div>
       <div class="project-list">
-        <h2>Project List</h2>
+        <h2><a onclick="
+          fetch('toyProjectList').then(function(response){
+            response.text().then(function(text){
+              document.getElementByID('toy-project-list').innerHTML = text;
+            })
+          })
+          ">Project List</a></h2>
+        <div id="toy-project-list">
+
+        </div>
         <p class="center">The following is a list of skillproof toy projects:</p>
         <ul>
           <li class="left" id="weather">2021/04/22 <a href="./weather.html">Weather applet</a> (<a href="https://codepen.io/mattfroese/pen/WaeYQV">actual application</a>)</li>

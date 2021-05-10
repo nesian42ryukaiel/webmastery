@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/master.css">
+    <title>Ajax Training</title>
+  </head>
+  <body>
+    <header>
+      <h1>Asynchronous JavaScript And XML</h1>
+    </header>
+    <main style="margin:8px">
+      <div style="padding:8px; margin:8px">
+        <p>Ajax is a set of web development techniques using many web technologies on the client-side to create asynchronous web applications. With Ajax, web applications can send and retrieve data from a server asynchronously without interfering with the display and behaviour of the existing page.</p>
+      </div>
+      <article>
+
+      </article>
+      <input type="button" value="fetch" onclick="
+        fetch('lorem').then(function(response){
+          response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+          })
+        })
+      ">
+    </main>
+    <footer></footer>
+  </body>
+</html>
