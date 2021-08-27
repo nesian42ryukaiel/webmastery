@@ -14,6 +14,7 @@
 
 const usernm = document.getElementById('usernm');
 const prev = document.getElementById('prev');
+const desturl = document.getElementById('desturl');
 const submitnm = document.getElementById('submitnm');
 const usermsg = document.getElementById('usermsg');
 const submitmsg = document.getElementById('submitmsg');
@@ -21,7 +22,7 @@ const submitmsg = document.getElementById('submitmsg');
 const logtest = document.getElementById('logtest');
 const cbstyle = document.getElementById('cbstyle'); // chatbox styling
 
-const url = 'http://192.168.0.13:3000';
+let url = '';
 // let request = new Request();
 let roomid = 0;
 let userid = 0;
@@ -38,6 +39,11 @@ usernm.onkeypress = function () {
   }
 }
 prev.onkeypress = function () {
+  if (event.keyCode == 13) {
+    getName();
+  }
+}
+desturl.onkeypress = function () {
   if (event.keyCode == 13) {
     getName();
   }
@@ -83,9 +89,12 @@ function getName() {
     }
   }
   userid = roomid; // temporary; should be DIFFERENT for non-room-openers
+  url += desturl.value;
+  console.log("server is on", url);
   // clear input (might be unnecessary)
   usernm.value = "";
   prev.value = "";
+  desturl.value = "";
   // record name and room ID on screen
   document.getElementById('yourname').textContent = namevalue;
   document.getElementById('roomid').textContent = roomid;

@@ -16,10 +16,15 @@
   </nav>
   <main style="text-align: center">
     <div id="prep" class="">
-      <input type="text" name="usernm" id="usernm" placeholder="Your Name">
-      <input type="text" name="prev" id="prev" placeholder="Room ID (optional)">
-      <!-- changed to button type for testing, should be submit type -->
-      <input type="button" name="submitnm" id="submitnm" value="Send">
+      <span id='prep-text'>
+        <input type="text" name="usernm" id="usernm" placeholder="Your Name">
+        <input type="text" name="prev" id="prev" placeholder="Room ID (optional)">
+        <input type="text" name="desturl" id="desturl" placeholder="Server">
+      </span>
+      <span id='prep-button'>
+        <!-- changed to button type for testing, should be submit type -->
+        <input type="button" name="submitnm" id="submitnm" value="Send">
+      </span>
     </div>
     <div id="app" class="" style="display: none">
       <div id="cbstyle">
