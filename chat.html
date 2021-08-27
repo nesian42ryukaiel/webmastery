@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/master.css">
+  <title>Simple Chat</title>
+</head>
+
+<body class="grail">
+  <header>
+    <h1 style="text-align: center">Sim<a href="./chat.html">p</a>le Chat</h1>
+  </header>
+  <nav>
+    <p style="color: black">WWW</p>
+  </nav>
+  <main style="text-align: center">
+    <div id="prep" class="">
+      <input type="text" name="usernm" id="usernm" placeholder="Your Name">
+      <input type="text" name="prev" id="prev" placeholder="Room ID (optional)">
+      <!-- changed to button type for testing, should be submit type -->
+      <input type="button" name="submitnm" id="submitnm" value="Send">
+    </div>
+    <div id="app" class="" style="display: none">
+      <div id="cbstyle">
+        <!-- <style>#menu > * {color: red;}</style> -->
+      </div>
+      <div id="menu">
+        <h2 class="welcome">Welcome, <strong id="yourname"></strong></h2>
+        <h3 class="welcome"><em id="roomid"></em></h3>
+        <p class="logout"><a id="exit" href="./chat.html">Exit Chat</a></p>
+      </div>
+      <div id="chatbox"></div>
+      <form name="message" action="">
+        <textarea type="text" name="usermsg" id="usermsg" rows="4" cols="32" placeholder="Chat..."></textarea>
+        <!-- for some reason if type is "submit" the page force refreshes -->
+        <input type="button" name="submitmsg" id="submitmsg" value="Send">
+        <!-- <input type="button" name="xportlog" id="xportlog" value="Export"> -->
+        <!-- <input type="button" name="logtest" id="logtest" value="Log"> -->
+      </form>
+    </div>
+  </main>
+  <aside>
+    <p style="color: black">WWW</p>
+  </aside>
+  <footer style="text-align: center"><em>Webmaster: Lucas Yew</em></footer>
+</body>
+<script src="./js/chat.js" charset="utf-8"></script>
+<link rel="stylesheet" href="./css/chat.css">
+</html>
