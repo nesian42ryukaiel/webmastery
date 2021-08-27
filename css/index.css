@@ -1,5 +1,4 @@
 * {
-  margin: 0;
   background-color: transparent;
 }
 .center {
@@ -17,8 +16,6 @@
 .right {
   text-align: right;
 }
-html {}
-head {}
 body {
   background: black;
   background: linear-gradient(to bottom, black, #383838 99%);
@@ -30,9 +27,6 @@ body {
 }
 header {
   text-align: center;
-}
-main {
-
 }
 footer {
   text-align: center;
@@ -49,9 +43,6 @@ h1 {
   background-color: transparent;
   color: gold;
   font-family: fantasy;
-}
-img {
-
 }
 strong, b {
   background-color: transparent;
