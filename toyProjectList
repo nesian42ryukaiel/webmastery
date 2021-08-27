@@ -3,4 +3,5 @@
   <li class="left" id="weather">2021/04/22 <a href="./weather.html">Weather applet</a> (<a href="https://codepen.io/mattfroese/pen/WaeYQV">actual application</a>)</li>
   <li class="left" id="virtual-keyboard">2021/04/24 <a href="./keyboard.html">Virtual keyboard</a></li>
   <li class="left" id="to-do-list">2021/04/29 <a href="./todolist.html">To-do list</a></li>
+  <li class="left" id="to-do-list">2021/08/27 <a href="./chat.html">Simple Chat</a></li>
 </ul>
