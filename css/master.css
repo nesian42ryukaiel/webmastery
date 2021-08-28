@@ -6,8 +6,8 @@
   display: grid;
   grid-template: auto 1fr auto / auto 1fr auto;
 }
-body {
-  /* height 100% required to push down footer */
+html, body {
+  /* height 100% on <html> required to push down footer */
   width: 100%;
   height: 100%;
   background-color: #282828;
