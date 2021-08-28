@@ -15,6 +15,7 @@
 const usernm = document.getElementById('usernm');
 const prev = document.getElementById('prev');
 const desturl = document.getElementById('desturl');
+const destport = document.getElementById('destport');
 const submitnm = document.getElementById('submitnm');
 const usermsg = document.getElementById('usermsg');
 const submitmsg = document.getElementById('submitmsg');
@@ -22,10 +23,14 @@ const submitmsg = document.getElementById('submitmsg');
 const logtest = document.getElementById('logtest');
 const cbstyle = document.getElementById('cbstyle'); // chatbox styling
 
+const scheme = 'http://'
+let domain = '';
+let port = '';
 let url = '';
-// let request = new Request();
 let roomid = 0;
 let userid = 0;
+
+var ws;
 
 /**
  * -=-|-=- * -=-|-=- * -=-|-=- * -=-|-=- * -=-|-=- * -=-|-=- * -=-|-=- *
@@ -48,19 +53,24 @@ desturl.onkeypress = function () {
     getName();
   }
 }
+destport.onkeypress = function () {
+  if (event.keyCode == 13) {
+    getName();
+  }
+}
 submitnm.onclick = getName;
 
 // the problem child; seems to not work, unlike usernm
 // fixed using textarea instead of input
 usermsg.onkeypress = function () {
   if (event.keyCode == 13) {
-    sendMessage();
+    chat();
     // https://stackoverflow.com/questions/31245808
     if(event.preventDefault) event.preventDefault();
     usermsg.value = "";
   }
 }
-submitmsg.onclick = sendMessage;
+submitmsg.onclick = chat;
 
 // xportlog.onclick = exportLog;
 
@@ -89,17 +99,20 @@ function getName() {
     }
   }
   userid = roomid; // temporary; should be DIFFERENT for non-room-openers
-  url += desturl.value;
-  console.log("server is on", url);
+  domain += desturl.value;
+  port += destport.value;
+  url = domain + ":" + port;
+  console.log("server is on", scheme + url);
   // clear input (might be unnecessary)
   usernm.value = "";
   prev.value = "";
   desturl.value = "";
+  destport.value = "";
   // record name and room ID on screen
   document.getElementById('yourname').textContent = namevalue;
   document.getElementById('roomid').textContent = roomid;
   // create styling for user ID in chatbox (note: this is different per user)
-  cbstyle.innerHTML += `<style>.usr${userid} {color: gold;}</style>`;
+  cbstyle.innerHTML += `<style>.usr${userid} {color: gold;} .usr-1 {color: #A00000}</style>`;
   // show app screen
   let appscreen = document.getElementById('app');
   if (appscreen.style.display === 'none') {
@@ -108,9 +121,24 @@ function getName() {
   } else {
     // appscreen.style.display = 'none';
   }
+  // websocket additional code
+  ws = new WebSocket('ws://' + url);
+  ws.addEventListener('open', () => {
+    const firstmessage = packWSmsg('firstMessage', -1, 'Admin', actime(now), 'Opening chatroom...');
+    ws.send(firstmessage); // send a message to the WebSocket server
+  });
+  ws.addEventListener('message', event => {
+    console.log('received message:', event.data);
+    document.getElementById('chatbox').innerHTML = event.data;
+    scrollDownChatbox();
+  });
 }
 
-function sendMessage() {
+function chat() {
+  sendWSmsg();
+}
+
+function sendWSmsg() {
   const now = new Date();
   let namevalue = document.getElementById('yourname').textContent;
   let message = usermsg.value;
@@ -118,20 +146,44 @@ function sendMessage() {
   if (message === '') {
     return;
   } else {
-    // let procdate = now.toLocaleString("ko-KR", {timeZone: "Asia/Seoul"});
     let procdate = actime(now);
-    const packedMessage = packMessage(userid, namevalue, procdate, message);
+    const wsMessage = packWSmsg('message', userid, namevalue, procdate, message);
     if (isJsonString(packMessage)) {
       console.log("is JSON string");
     } else {
-      console.log("is " + typeof(packedMessage));
+      console.log("wsmsg is " + typeof(wsMessage));
     }
-    let endpoint = url + `/chatlog/${roomid}`;
+    let endpoint = 'ws://' + url + `/chatlog/${roomid}`;
     console.log("preparing export to: " + endpoint);
-    exportMessage(endpoint, packedMessage);
+    // exportMessage(endpoint, packedMessage);
+    ws.send(wsMessage);
     // scrollDownChatbox();
   }
 }
+
+// function sendMessage() {
+//   const now = new Date();
+//   let namevalue = document.getElementById('yourname').textContent;
+//   let message = usermsg.value;
+//   usermsg.value = "";
+//   if (message === '') {
+//     return;
+//   } else {
+//     let procdate = actime(now);
+//     const packedMessage = packMessage(userid, namevalue, procdate, message);
+//     const wsMessage = packWSmsg(userid, namevalue, procdate, message);
+//     if (isJsonString(packMessage)) {
+//       console.log("is JSON string");
+//     } else {
+//       console.log("is " + typeof(packedMessage));
+//     }
+//     let endpoint = scheme + url + `/chatlog/${roomid}`;
+//     console.log("preparing export to: " + endpoint);
+//     exportMessage(endpoint, packedMessage);
+//     // ws.send(wsMessage);
+//     // scrollDownChatbox();
+//   }
+// }
 
 function actime(date) {
   let result = "";
@@ -170,6 +222,18 @@ function appendzero(str, num, offset) {
  *   "Price": 18.00
  * }
  */
+
+function packWSmsg(type, id, name, date, content) {
+  const result = {
+    "type": type,
+    "id": id,
+    "name": name,
+    "date": date,
+    "content": content
+  };
+  console.log("packed message: " + JSON.stringify(result));
+  return JSON.stringify(result);
+}
 
 function packMessage(id, name, date, content) {
   const result = {
